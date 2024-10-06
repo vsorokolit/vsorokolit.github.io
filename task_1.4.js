@@ -108,45 +108,101 @@ if (navigator.geolocation) {
       "coordinatesUser"
     ).innerText = `Широта: ${position.coords.latitude}, Довгота ${position.coords.longitude}`;
   });
-
-  // 1. LocalStorage
-  const localStorageBlock = document.getElementById("localStorageBlock");
-  localStorageBlock.innerText = localStorage.getItem("localText") || "";
-
-  localStorageBlock.addEventListener("input", () => {
-    localStorage.setItem("localText", localStorageBlock.innerText);
-  });
-
-  // 2. Cookies
-  const cookiesBlock = document.getElementById("cookiesBlock");
-
-  const getCookie = (name) => {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    return parts.length === 2 ? parts.pop().split(";").shift() : "";
-  };
-
-  window.onload = () => {
-    cookiesBlock.innerText = getCookie("cookieText") || "";
-  };
-
-  cookiesBlock.addEventListener("input", () => {
-    const date = new Date();
-    date.setTime(date.getTime() + 365 * 24 * 60 * 60 * 1000); // Кука на 1 рік
-    const expires = `expires=${date.toUTCString()}`;
-
-    if (cookiesBlock.innerText === "") {
-      document.cookie = `cookieText=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
-    } else {
-      document.cookie = `cookieText=${cookiesBlock.innerText}; ${expires}; path=/; SameSite=Lax;`;
-    }
-  });
-
-  // 3. SessionStorage
-  const sessionStorageBlock = document.getElementById("sessionStorageBlock");
-  sessionStorageBlock.innerText = sessionStorage.getItem("sessionText") || "";
-
-  sessionStorageBlock.addEventListener("input", () => {
-    sessionStorage.setItem("sessionText", sessionStorageBlock.innerText);
-  });
 }
+
+// 1. LocalStorage
+const localStorageBlock = document.getElementById("localStorageBlock");
+localStorageBlock.innerText = localStorage.getItem("localText") || "";
+
+localStorageBlock.addEventListener("input", () => {
+  localStorage.setItem("localText", localStorageBlock.innerText);
+});
+
+// 2. Cookies
+const cookiesBlock = document.getElementById("cookiesBlock");
+
+const getCookie = (name) => {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  return parts.length === 2 ? parts.pop().split(";").shift() : "";
+};
+
+window.onload = () => {
+  cookiesBlock.innerText = getCookie("cookieText") || "";
+};
+
+cookiesBlock.addEventListener("input", () => {
+  const date = new Date();
+  date.setTime(date.getTime() + 365 * 24 * 60 * 60 * 1000); // Кука на 1 рік
+  const expires = `expires=${date.toUTCString()}`;
+
+  if (cookiesBlock.innerText === "") {
+    document.cookie = `cookieText=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+  } else {
+    document.cookie = `cookieText=${cookiesBlock.innerText}; ${expires}; path=/; SameSite=Lax;`;
+  }
+});
+
+// 3. SessionStorage
+const sessionStorageBlock = document.getElementById("sessionStorageBlock");
+sessionStorageBlock.innerText = sessionStorage.getItem("sessionText") || "";
+
+sessionStorageBlock.addEventListener("input", () => {
+  sessionStorage.setItem("sessionText", sessionStorageBlock.innerText);
+});
+
+//
+const scrollToTopButton = document.getElementById("scrollToTop");
+
+window.addEventListener("scroll", () => {
+  if (
+    document.body.scrollTop > 100 ||
+    document.documentElement.scrollTop > 100
+  ) {
+    scrollToTopButton.style.display = "block"; // Показати кнопку
+  } else {
+    scrollToTopButton.style.display = "none"; // Сховати кнопку
+  }
+});
+
+scrollToTopButton.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth", // Плавне прокручування
+  });
+});
+
+//
+const outerBlock = document.getElementById("outerBlock");
+const innerBlock = document.getElementById("innerBlock");
+
+outerBlock.addEventListener("click", () => {
+  alert("Натиснуто зовнішній блок");
+});
+
+innerBlock.addEventListener("click", (event) => {
+  event.stopPropagation(); // Зупинити спливаючі події
+  alert("Натиснуто внутрішній блок");
+});
+
+//
+const showOverlayBtn = document.getElementById("showOverlayBtn");
+const overlay = document.getElementById("overlay");
+
+showOverlayBtn.addEventListener("click", () => {
+  overlay.style.display = "block"; // Показати квадрат
+  document.body.classList.add("no-scroll"); // Заборонити скролінг
+});
+
+overlay.addEventListener("click", () => {
+  overlay.style.display = "none"; // Приховати квадрат
+  document.body.classList.remove("no-scroll"); // Відновити скролінг
+});
+
+//
+const form = document.getElementById("myForm");
+
+form.addEventListener("submit", function (event) {
+  event.preventDefault(); // Запобігає перезавантаженню сторінки
+  alert("Форма відправлена без перезавантаження сторінки!");
+});
