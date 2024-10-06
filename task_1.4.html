@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Завдання</title>
+    <link rel="stylesheet" href="task_1.4.css" />
+  </head>
+  <body>
+    <h2>Завдання 1 && 2</h2>
+    <div id="task1">
+      <button onclick="hideWithCSS()">CSS (display: none)</button>
+      <button onclick="hideWithJS()">JS (Remove Element)</button>
+      <button onclick="hideWithClass()">CSS+JS (Add Class)</button>
+      <button onclick="toggleBlock()">Toggle Block</button>
+      <div id="myBlock1" class="myBlock1"></div>
+    </div>
+
+    <h2>Завдання 3</h2>
+    <div id="task3">
+      <button onclick="toggleFiveBlocks()">Toggle Block</button>
+      <div id="fiveBlocks">
+        <div id="myBlock2" class="myBlock2"></div>
+        <div id="myBlock3" class="myBlock2"></div>
+        <div id="myBlock4" class="myBlock2"></div>
+        <div id="myBlock5" class="myBlock2"></div>
+        <div id="myBlock6" class="myBlock2"></div>
+      </div>
+    </div>
+
+    <h2>Завдання 4</h2>
+    <div id="task4">
+      <p>Example: .myBlock2</p>
+      <input type="text" id="cssSelector" placeholder="Enter CSS selector." />
+      <button onclick="hideSelected()">Hide Selected</button>
+    </div>
+
+    <h2>Завдання 5</h2>
+    <div id="task5">
+      <div id="yellowBlock" class="yellowBlock"></div>
+    </div>
+
+    <h2>Завдання 6</h2>
+    <div id="task6">
+      <button id="hoverButton">Hover over me</button>
+      <div id="redBlock" class="redBlock hidden"></div>
+    </div>
+
+    <h2>Завдання 7</h2>
+    <div id="task7">
+      <input type="text" id="focusInput" placeholder="Focus on me" />
+      <div id="greenRect" class="greenRect hidden"></div>
+    </div>
+
+    <h2>Завдання 8</h2>
+    <div id="task8">
+      <input type="text" id="imageUrl" placeholder="Enter image URL" />
+      <button onclick="showImage()">Show Image</button>
+      <div id="imageContainer"></div>
+    </div>
+
+    <h2>Завдання 9</h2>
+    <div id="task9">
+      <div>
+        Example:<br />
+        https://steamuserimages-a.akamaihd.net/ugc/872998007403052997/D20EFD342151114E0E32A3BE73FD846F05A86F55/?imw=5000&imh=5000&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false<br />
+        https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBTwenNiSGdqHZSKLFSQQYetT4RsPEat6qNg&s
+      </div>
+      <textarea
+        name="textarea"
+        id="imagesUrls"
+        placeholder="Enter image URL"
+      ></textarea>
+      <button onclick="showImages()">Show Image</button>
+      <div id="imagesContainer"></div>
+    </div>
+    <h2>Завдання 10</h2>
+    <div id="task10">
+      <div id="coordinates">X: 123, Y: 984</div>
+    </div>
+
+    <h2>Завдання 11</h2>
+    <div id="task11">
+      <div id="languageDiv">Language:</div>
+    </div>
+
+    <h2>Завдання 12</h2>
+    <div id="task12">
+      <div id="coordinatesUser">Широта: 0.0, Довгота: 0.0</div>
+    </div>
+
+    <h2>Завдання 13</h2>
+    <div id="task13">
+      <h4>LocalStorage Block</h2>
+      <div
+        id="localStorageBlock"
+        class="editable-block"
+        contenteditable="true"
+      ></div>
+
+      <h4>Cookies Block</h2>
+      <div
+        id="cookiesBlock"
+        class="editable-block"
+        contenteditable="true"
+      ></div>
+
+      <h4>SessionStorage Block</h2>
+      <div
+        id="sessionStorageBlock"
+        class="editable-block"
+        contenteditable="true"
+      ></div>
+    </div>
+
+    <script src="task_1.4.js"></script>
+  </body>
+</html>
