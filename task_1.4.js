@@ -118,18 +118,12 @@ if (navigator.geolocation) {
   });
 
   // 2. Cookies
-  document.cookie = "testCookie=Hello; path=/;";
-  console.log("Set test cookie: ", document.cookie);
-
   const cookiesBlock = document.getElementById("cookiesBlock");
 
   const getCookie = (name) => {
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) {
-      return parts.pop().split(";").shift();
-    }
-    return "";
+    return parts.length === 2 ? parts.pop().split(";").shift() : "";
   };
 
   window.onload = () => {
@@ -143,12 +137,9 @@ if (navigator.geolocation) {
 
     if (cookiesBlock.innerText === "") {
       document.cookie = `cookieText=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
-      console.log("cookie deleted");
     } else {
       document.cookie = `cookieText=${cookiesBlock.innerText}; ${expires}; path=/; SameSite=Lax;`;
-      console.log("cookie saved");
     }
-    console.log("Current cookies: ", document.cookie);
   });
 
   // 3. SessionStorage
